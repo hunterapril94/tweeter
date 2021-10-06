@@ -32,3 +32,7 @@ section.new-tweet form {
   font-family: 'Source Sans Pro';
   font-weight: 600;
 }
+
+.overlimit {
+  color: red;
+}

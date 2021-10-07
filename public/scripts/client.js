@@ -5,11 +5,17 @@
  */
 
 $('document').ready(function(){
-
+  $('#error').hide()
   const createTweetElement = function(tweet) {
+    //makes it so users can't ruin the site with writing scripts into textarea
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
     const $tweet = $(`<article class="tweet"></article>`);
     const $header = $(`<header><div><img src=${tweet.user.avatars}><p>${tweet.user.name}</p></div><p>${tweet.user.handle}</p></header>`)
-    const $tweetBody = $(`<p>${tweet.content.text}</p>`)
+    const $tweetBody = $(`<p>${escape(tweet.content.text)}</p>`)
     const $footer = $(`<footer><p>${timeago.format(tweet.created_at)}</p><div><i class="fas fa-flag"></i><i class="fas fa-retweet"></i><i class="fas fa-heart"></i></div></footer>`)
 
     $tweet.append($header)
@@ -29,18 +35,21 @@ $('document').ready(function(){
 
   $('.new-tweet form').submit(function(e){
     e.preventDefault();
+
     const $newData = $(this).serialize();
     if($(".new-tweet form textarea").val().length === 0) {
-      return alert("Tweet cannot be blank")
+      $('#error').show()
+      return $('#error').append("Tweet cannot be blank")
     } else if ($(".new-tweet form textarea").val().length > 140) {
-      return alert("Tweet is over character limit. Consider turning it into a novel.")
+      $('#error').show()
+      return $('#error').append("Tweet is over character limit. Consider turning it into a novel.")
     }
     $.post("/tweets", $newData, function(data){
       $.get("/tweets", function(data, status) {
         renderTweets(data.slice(-1));
       })
     })
-    $(".new-tweet form textarea").val("")
+    $('.new-tweet form textarea').val("")
   });
 
   const loadTweets = function(){

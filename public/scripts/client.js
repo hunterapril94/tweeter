@@ -23,16 +23,24 @@ $('document').ready(function(){
     // takes return value and appends it to the tweets container
     for(let i = 0; i < tweets.length; i++) {
       const newTweet = createTweetElement(tweets[i])
-      $('#tweets-container').append(newTweet)
+      $('#tweets-container').prepend(newTweet)
     }
   }
 
   $('.new-tweet form').submit(function(e){
     e.preventDefault();
     const $newData = $(this).serialize();
+    if($(".new-tweet form textarea").val().length === 0) {
+      return alert("Tweet cannot be blank")
+    } else if ($(".new-tweet form textarea").val().length > 140) {
+      return alert("Tweet is over character limit. Consider turning it into a novel.")
+    }
     $.post("/tweets", $newData, function(data){
-      console.log($newData)
+      $.get("/tweets", function(data, status) {
+        renderTweets(data.slice(-1));
+      })
     })
+    $(".new-tweet form textarea").val("")
   });
 
   const loadTweets = function(){

@@ -1,6 +1,6 @@
 $(document).ready(function() {
   const text = $(".new-tweet form textarea")
-  text.on('keydown', () => {
+  text.on('keyup', () => {
     $('#error').hide()
     $('output').val(140 - text.val().length)
 

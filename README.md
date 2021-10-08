@@ -1,17 +1,25 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone.
+Tweeter is a simple, single-page Twitter clone. It has a responsive design which gives it a sleek look both in desktop and on mobile. It showcases my knowledge of css, AJAX requests and jQuery.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
+
 
 ## Getting Started
 
-1. Fork this repository, then clone your fork of this repository.
+1. Clone this repository.
 2. Install dependencies using the `npm install` command.
-3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
-4. Go to <http://localhost:8080/> in your browser.
+3. Start the web server using the `npm run local` command.
+4. You can view this in your browser via the following link: <http://localhost:8080/>
 
 ## Dependencies
 
 - Express
 - Node 5.10.x or above
+- Chance
+- body-parser
+
+## See how it works!
+
+!["screenshot of desktop design"](https://github.com/hunterapril94/tweeter/blob/4deb9e765eadade9ec9771aa0857d5bc3a752a05/public/documents/desktop_design.png)
+!["screenshot of mobile design"](https://github.com/hunterapril94/tweeter/blob/4deb9e765eadade9ec9771aa0857d5bc3a752a05/public/documents/mobile-design.png)
+!["screenshot of hover over tweet"](https://github.com/hunterapril94/tweeter/blob/4deb9e765eadade9ec9771aa0857d5bc3a752a05/public/documents/tweet-hover.png)

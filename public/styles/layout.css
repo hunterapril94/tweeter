@@ -30,11 +30,10 @@ main {
   margin:auto;
   background-color: #f4f1ec;
 }
-
+/* header and main content go side by side on larger screens */
 @media screen and (min-width: 1024px) {
   div.responsive {
     display: flex;
-    justify-content: space-between;
     width: 100%;
   }
   @media screen and (min-width: 1024px) {
